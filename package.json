@@ -1,0 +1,12 @@
+﻿{
+  "name": "robotics-kinematics-studio",
+  "version": "1.0.0",
+  "description": "Forward & Inverse Kinematics Simulator with Denavit-Hartenberg (D-H) Parameter Solver for Multi-Axis Robotic Manipulators",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": ["robotics", "inverse-kinematics", "forward-kinematics", "denavit-hartenberg", "mechatronics", "mechanical-engineering", "threejs"],
+  "author": "Rushikesh Garad",
+  "license": "MIT"
+}

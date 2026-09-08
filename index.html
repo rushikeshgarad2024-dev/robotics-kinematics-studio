@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robotics & Kinematics Studio | Mechatronics & Mechanical Engineering</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header>
+      <div class="header-content">
+        <h1>🤖 Robotics Kinematics & Motion Studio</h1>
+        <p>Forward/Inverse Kinematics (FK/IK) Solver, D-H Parameter Matrix & Trajectory Planner</p>
+      </div>
+      <div class="author-badge">Robotics & Mechatronics • Rushikesh Garad</div>
+    </header>
+
+    <div class="main-layout">
+      <div class="control-panel">
+        <h3>Kinematics Mode & Controls</h3>
+        <div class="form-group">
+          <label>Control Mode:</label>
+          <select id="modeSelect">
+            <option value="fk">Forward Kinematics (Joint Angles)</option>
+            <option value="ik">Inverse Kinematics (Target X, Y Coordinates)</option>
+          </select>
+        </div>
+
+        <div id="fkControls">
+          <div class="form-group">
+            <label>Joint 1 Angle ($\theta_1$): <span id="theta1Val">45°</span></label>
+            <input type="range" id="theta1Range" min="-180" max="180" value="45" />
+          </div>
+          <div class="form-group">
+            <label>Joint 2 Angle ($\theta_2$): <span id="theta2Val">-30°</span></label>
+            <input type="range" id="theta2Range" min="-180" max="180" value="-30" />
+          </div>
+          <div class="form-group">
+            <label>Joint 3 Angle ($\theta_3$): <span id="theta3Val">20°</span></label>
+            <input type="range" id="theta3Range" min="-180" max="180" value="20" />
+          </div>
+        </div>
+
+        <div id="ikControls" style="display:none;">
+          <div class="form-group">
+            <label>Target X Position: <span id="targetXVal">250 mm</span></label>
+            <input type="range" id="targetXRange" min="50" max="450" value="250" />
+          </div>
+          <div class="form-group">
+            <label>Target Y Position: <span id="targetYVal">200 mm</span></label>
+            <input type="range" id="targetYRange" min="50" max="400" value="200" />
+          </div>
+        </div>
+
+        <div class="results-card">
+          <h4>📍 End-Effector Telemetry</h4>
+          <div class="stat-row"><span>Position $(X, Y)$:</span> <strong id="eePos">(280.4, 195.2) mm</strong></div>
+          <div class="stat-row"><span>Reach Radius ($R$):</span> <strong id="eeRadius">341.6 mm</strong></div>
+          <div class="stat-row"><span>Workspace Reach:</span> <strong id="workspaceLimit">500.0 mm (Max)</strong></div>
+          <div class="stat-row"><span>Manipulator Jacobian:</span> <span class="badge-safe">NON-SINGULAR</span></div>
+        </div>
+      </div>
+
+      <div class="viewport-panel">
+        <div class="canvas-header">
+          <span>Interactive 3-DOF Robotic Manipulator Plane (Click on Canvas to Move in IK Mode)</span>
+          <div class="legend">
+            <span class="legend-box base"></span> Base Link
+            <span class="legend-box forearm"></span> Forearm Link
+            <span class="legend-box ee"></span> End-Effector
+          </div>
+        </div>
+        <canvas id="robotCanvas" width="800" height="500"></canvas>
+      </div>
+    </div>
+  </div>
+  <script src="kinematics.js"></script>
+</body>
+</html>
